@@ -18,10 +18,14 @@ job_desc = [
     'Job3 Description',
 ]
 
-# def job_page(request):
-#     my_str = '<ul>'
-#     for j in job_title:
-#         my_str += f'<a href=<li>{job_title[j.index]}</li>'
+def display_jobs(request):
+    my_str = '<ul>'
+    for j in job_title:
+        job_id = job_title.index(j)
+        my_str += f'<li> <a href= {reverse("jobs_detail", args=(job_id,))}> {j}</li>'
+    my_str += '</ul>'
+
+    return HttpResponse(my_str)
 
 def job_detail_page(request, id):
     try:
